@@ -4,7 +4,7 @@ const ROLES = [
   "WordPress Developer",
   "Frontend Developer",
   "Web Developer",
-  "QA Engineer",
+  "Software Tester",
 ]
 
 export default function Hero() {

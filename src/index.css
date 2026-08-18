@@ -121,3 +121,534 @@
     animation-iteration-count: 1 !important;
   }
 }
+
+/* ABOUT — Scrapbook + marquee layout */
+
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap');
+
+.about-handwritten {
+  font-family: 'Kalam', cursive;
+}
+
+.about-paper-bg {
+  background-color: #F5F5F5;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 31px,
+    #D9D9D9 32px
+  );
+}
+
+/* Scrolling marquee strip */
+.about-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 18s linear infinite;
+}
+.about-marquee-track:hover {
+  animation-play-state: paused;
+}
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.about-marquee-item {
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  color: #fff;
+  padding: 0 2rem;
+  white-space: nowrap;
+}
+.about-marquee-dot {
+  color: #FF85BB;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-marquee-track {
+    animation: none;
+  }
+}
+
+/* Outlined polaroid (not filled white — border only, like the reference) */
+.about-polaroid-outline {
+  border: 3px solid #FF85BB;
+  border-radius: 4px;
+  padding: 10px;
+  transform: rotate(-6deg);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  background: rgba(255, 255, 255, 0.4);
+}
+.about-polaroid-outline:hover {
+  transform: rotate(-2deg) scale(1.02);
+}
+
+.about-image-wrap {
+  opacity: 0;
+  transform: translateX(-100px) rotate(-14deg);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.about-image-wrap.about-visible {
+  opacity: 1;
+  transform: translateX(0) rotate(-6deg);
+}
+
+.about-text-block {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s;
+}
+.about-text-block.about-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-image-tilt {
+  cursor: zoom-in;
+}
+.about-image-zoom-overlay {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: rgba(2, 26, 84, 0.5);
+}
+.about-polaroid-outline:hover .about-image-zoom-overlay {
+  opacity: 1;
+}
+.about-image-zoom-icon {
+  transform: scale(0.7);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.about-polaroid-outline:hover .about-image-zoom-icon {
+  transform: scale(1);
+}
+
+@keyframes lightboxFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes lightboxZoomIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.about-lightbox-backdrop {
+  animation: lightboxFadeIn 0.25s ease-out both;
+  background: rgba(2, 26, 84, 0.85);
+  backdrop-filter: blur(4px);
+}
+.about-lightbox-image {
+  animation: lightboxZoomIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.about-lightbox-close {
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.about-lightbox-close:hover {
+  transform: scale(1.1) rotate(90deg);
+  background: #FF85BB;
+}
+
+/* Big rotated highlighter-style name tag */
+.about-name-tag {
+  display: inline-block;
+  background: #FF85BB;
+  color: #fff;
+  transform: rotate(-3deg);
+  padding: 14px 28px;
+  box-shadow: 6px 6px 0 rgba(2, 26, 84, 0.15);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.about-name-tag:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+/* "Read more" link */
+.about-readmore {
+  color: #021A54;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  text-decoration-color: #FF85BB;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.about-readmore:hover {
+  color: #FF85BB;
+}
+
+.about-bio-extra {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease;
+}
+.about-bio-extra.about-open {
+  grid-template-rows: 1fr;
+}
+
+/* Pill-style tag bars at the bottom, matching the reference's underline bars */
+.about-tagbar {
+  cursor: pointer;
+  background: #FFCEE3;
+  border-bottom: 3px solid #021A54;
+  padding: 8px 16px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  color: #021A54;
+  text-align: center;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.about-tagbar:hover {
+  transform: translateY(-3px);
+  background: #FF85BB;
+  color: #fff;
+}
+.about-tagbar.about-tagbar-active {
+  background: #021A54;
+  color: #fff;
+  border-bottom-color: #FF85BB;
+}
+
+.about-tag-detail {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+.about-tag-detail.about-open {
+  grid-template-rows: 1fr;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .about-polaroid-outline, .about-name-tag, .about-tagbar {
+    transition: none;
+  }
+}
+
+/* PROJECTS — scrapbook page */
+
+.projects-paper-bg {
+  background-color: #FDEAF3;
+  background-image:
+    radial-gradient(circle, rgba(2, 26, 84, 0.06) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 133, 187, 0.12) 1px, transparent 1px);
+  background-size: 26px 26px, 26px 26px;
+  background-position: 0 0, 13px 13px;
+}
+
+/* Floating doodle stickers drifting in the corners */
+.projects-sticker {
+  position: absolute;
+  opacity: 0.35;
+  animation: float 10s ease-in-out infinite;
+  pointer-events: none;
+}
+.projects-sticker-star {
+  top: 6%;
+  right: 6%;
+  animation-duration: 12s;
+}
+.projects-sticker-heart {
+  bottom: 8%;
+  left: 5%;
+  animation-duration: 9s;
+  animation-direction: reverse;
+}
+@media (max-width: 640px) {
+  .projects-sticker {
+    display: none;
+  }
+}
+
+.projects-heading {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.projects-heading.projects-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hand-drawn squiggle under the heading, draws itself in */
+.projects-underline {
+  margin-top: 2px;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.8s ease-out 0.3s;
+}
+.projects-underline.projects-visible {
+  stroke-dashoffset: 0;
+}
+
+.projects-card {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  position: relative;
+}
+.projects-card.projects-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.projects-polaroid {
+  position: relative;
+  height: 100%;
+  background: #FFFFFF;
+  border: 2px solid #FF85BB;
+  border-radius: 6px;
+  padding: 20px;
+  box-shadow: 0 10px 24px rgba(2, 26, 84, 0.08);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+.projects-polaroid.projects-tilt-a {
+  transform: rotate(-2deg);
+}
+.projects-polaroid.projects-tilt-b {
+  transform: rotate(2deg);
+}
+.projects-polaroid:hover {
+  transform: rotate(0deg) translateY(-6px);
+  box-shadow: 0 18px 30px rgba(2, 26, 84, 0.16);
+  z-index: 2;
+}
+
+/* Washi tape holding the polaroid down */
+.projects-tape {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  width: 72px;
+  height: 26px;
+  transform: translateX(-50%) rotate(-4deg);
+  opacity: 0.88;
+  box-shadow: 0 2px 4px rgba(2, 26, 84, 0.15);
+  mix-blend-mode: multiply;
+  z-index: 3;
+}
+.projects-tape-pink {
+  background: repeating-linear-gradient(
+    45deg,
+    #FF85BB,
+    #FF85BB 6px,
+    #FFA9CE 6px,
+    #FFA9CE 12px
+  );
+}
+.projects-tape-navy {
+  background: repeating-linear-gradient(
+    45deg,
+    #021A54,
+    #021A54 6px,
+    #22366e 6px,
+    #22366e 12px
+  );
+  opacity: 0.75;
+}
+.projects-tape-light {
+  background: repeating-linear-gradient(
+    45deg,
+    #FFCEE3,
+    #FFCEE3 6px,
+    #FFE1EE 6px,
+    #FFE1EE 12px
+  );
+}
+
+/* Push pin */
+.projects-pin {
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #FFFFFF, #FF85BB 55%, #b95584 100%);
+  box-shadow: 0 3px 5px rgba(2, 26, 84, 0.35);
+  z-index: 3;
+}
+
+/* Paperclip, angled onto the top-left corner */
+.projects-clip {
+  position: absolute;
+  top: -16px;
+  left: 14px;
+  transform: rotate(-8deg);
+  z-index: 3;
+  filter: drop-shadow(0 2px 2px rgba(2, 26, 84, 0.25));
+}
+
+.projects-featured-badge {
+  position: absolute;
+  top: 10px;
+  right: -10px;
+  background: #021A54;
+  color: #FFCEE3;
+  font-size: 0.85rem;
+  padding: 3px 12px;
+  border-radius: 9999px;
+  transform: rotate(8deg);
+  box-shadow: 0 3px 6px rgba(2, 26, 84, 0.25);
+  z-index: 3;
+}
+
+.projects-thumb {
+  width: 100%;
+  aspect-ratio: 16/10;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  background: #F5F5F5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.projects-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+  object-position: center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.projects-polaroid:hover .projects-thumb-img {
+  transform: scale(1.06);
+}
+
+.projects-caption {
+  padding: 0 4px;
+}
+
+.projects-role {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FF85BB;
+  margin-bottom: 4px;
+}
+
+.projects-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #021A54;
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+
+.projects-description {
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.projects-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.projects-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #021A54;
+  background: #FFCEE3;
+  border-radius: 9999px;
+  padding: 3px 10px;
+}
+
+/* Torn washi-tape style divider between the grid and the "View more" button */
+.projects-divider {
+  height: 22px;
+  margin: 3rem auto 1.5rem;
+  max-width: 460px;
+  background: repeating-linear-gradient(
+    45deg,
+    #021A54,
+    #021A54 8px,
+    #22366e 8px,
+    #22366e 16px
+  );
+  opacity: 0.85;
+  transform: rotate(-1deg);
+  clip-path: polygon(
+    0% 20%, 3% 0%, 8% 15%, 14% 2%, 20% 18%, 26% 4%, 32% 16%, 38% 2%,
+    44% 14%, 50% 0%, 56% 16%, 62% 4%, 68% 18%, 74% 2%, 80% 15%, 86% 0%,
+    92% 20%, 100% 5%, 100% 80%, 95% 100%, 88% 82%, 82% 98%, 76% 84%,
+    70% 100%, 64% 82%, 58% 96%, 52% 84%, 46% 100%, 40% 84%, 34% 98%,
+    28% 82%, 22% 100%, 16% 84%, 10% 98%, 4% 82%, 0% 100%
+  );
+}
+
+.projects-more-note {
+  color: #021A54;
+  font-size: 1.1rem;
+  transform: rotate(-2deg);
+  margin-bottom: 2px;
+}
+
+.projects-arrow {
+  opacity: 0.8;
+  margin-bottom: -4px;
+}
+.projects-arrow-flip {
+  transform: scaleY(-1);
+}
+
+.projects-view-more {
+  background: #FF85BB;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border: 2px solid #021A54;
+  border-radius: 9999px;
+  padding: 0.65rem 2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+.projects-view-more:hover {
+  background: #021A54;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(2, 26, 84, 0.25);
+}
+.projects-view-more:active {
+  transform: translateY(0);
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .projects-polaroid,
+  .projects-view-more {
+    transition: none;
+  }
+  .projects-sticker {
+    animation: none;
+  }
+}
+
+.projects-polaroid-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.projects-title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.projects-link-icon {
+  color: #FF85BB;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.projects-polaroid-link:hover .projects-link-icon {
+  transform: translate(2px, -2px);
+}

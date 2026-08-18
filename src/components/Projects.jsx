@@ -3,7 +3,7 @@ import cpd from "../assets/cpd.webp"
 import hrExpo from "../assets/hrexpo.webp"
 import pupgass from "../assets/gass-uccs.webp"
 import lms from "../assets/lms.webp"
-import createspace from "../assets/createSpace.webp"
+import createspace from "../assets/CreateSpace.webp"
 
 const PROJECTS = [
   {

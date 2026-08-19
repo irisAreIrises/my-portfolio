@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(16px); }
@@ -131,7 +132,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap');
 
 .about-handwritten {
-  font-family: 'Kalam', cursive;
+  font-family: 'Patrick Hand', cursive;
 }
 
 .about-paper-bg {
@@ -743,7 +744,7 @@
 }
 
 .skills-card-title {
-  font-family: 'Kalam', cursive;
+  font-family: 'Patrick Hand', cursive;
   font-weight: 700;
   font-size: 1.05rem;
   color: #021A54;
@@ -811,7 +812,7 @@
 }
 
 .skills-notebook-title {
-  font-family: 'Kalam', cursive;
+  font-family: 'Patrick Hand', cursive;
   font-weight: 700;
   font-size: 1.3rem;
   color: #021A54;
@@ -820,7 +821,7 @@
 }
 
 .skills-notebook-hint {
-  font-family: 'Kalam', cursive;
+  font-family: 'Patrick Hand', cursive;
   font-size: 0.85rem;
   color: #FF85BB;
   margin-bottom: 14px;
@@ -971,7 +972,7 @@
 }
 
 .skills-scroll-hint {
-  font-family: 'Kalam', cursive;
+  font-family: 'Patrick Hand', cursive;
   font-size: 0.85rem;
   color: #FF85BB;
 }
@@ -1140,7 +1141,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Kalam', cursive;
+  font-family: 'Patrick Hand', cursive;
   font-size: 0.7rem;
   font-weight: 700;
   text-align: center;
@@ -1159,7 +1160,7 @@
 }
 
 .contact-envelope-caption {
-  font-family: 'Kalam', cursive;
+  font-family: 'Patrick Hand', cursive;
   font-size: 0.85rem;
   color: #021A54;
   z-index: 15;
@@ -1221,7 +1222,7 @@
 }
 
 .contact-letter-greeting {
-  font-family: 'Kalam', cursive;
+  font-family: 'Patrick Hand', cursive;
   font-size: 1.2rem;
   color: #021A54;
   margin-bottom: 10px;
@@ -1276,7 +1277,7 @@
   top: -18px;
   background: #021A54;
   color: #fff;
-  font-family: 'Kalam', cursive;
+  font-family: 'Patrick Hand', cursive;
   font-size: 0.65rem;
   padding: 2px 7px;
   border-radius: 4px;
@@ -1290,7 +1291,7 @@
 }
 
 .contact-letter-sign {
-  font-family: 'Kalam', cursive;
+  font-family: 'Patrick Hand', cursive;
   font-size: 0.95rem;
   color: #021A54;
   margin-top: 12px;
@@ -1298,7 +1299,7 @@
 }
 
 .contact-hint {
-  font-family: 'Kalam', cursive;
+  font-family: 'Patrick Hand', cursive;
   font-size: 0.9rem;
   color: #FF85BB;
   margin-top: 18px;

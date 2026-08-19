@@ -141,7 +141,7 @@ export default function About() {
             <div id="about-text-block" className={`about-text-block ${isVisible ? "about-visible" : ""}`}>
               <div id="about-name-tag" className="about-name-tag mb-6">
                 <span className="about-handwritten text-3xl sm:text-4xl font-bold">
-                  Hi, I'm Your Name
+                  Hi, I'm Sigrid Bermas
                 </span>
               </div>
 

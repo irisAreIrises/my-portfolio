@@ -16,7 +16,6 @@ export default function Hero() {
   const blobLightPinkRef = useRef(null)
   const intervalRef = useRef(null)
 
-  // Detect touch/coarse-pointer devices so we skip the cursor-parallax there
   useEffect(() => {
     const mq = window.matchMedia("(hover: hover) and (pointer: fine)")
     setCanHover(mq.matches)
@@ -25,7 +24,6 @@ export default function Hero() {
     return () => mq.removeEventListener("change", handler)
   }, [])
 
-  // Auto-rotate the role text every 2.2s
   useEffect(() => {
     intervalRef.current = setInterval(() => {
       setRoleIndex((prev) => (prev + 1) % ROLES.length)
@@ -41,7 +39,6 @@ export default function Hero() {
     }, 2200)
   }
 
-  // Blobs drift toward the cursor — only runs on devices with a real mouse
   const handleMouseMove = useCallback((e) => {
     if (!canHover) return
     const rect = heroRef.current.getBoundingClientRect()
@@ -69,33 +66,18 @@ export default function Hero() {
       {/* Dot-grid background */}
       <div id="hero-grid" className="hero-grid absolute inset-0 opacity-40" aria-hidden="true" />
 
-      {/* Ambient background blobs — smaller on mobile/tablet */}
-      <div
-        id="hero-blob-navy-wrap"
-        ref={blobNavyRef}
-        className="hero-blob-wrap absolute -top-16 -left-16 sm:-top-24 sm:-left-24"
-        aria-hidden="true"
-      >
+      {/* Ambient blobs */}
+      <div id="hero-blob-navy-wrap" ref={blobNavyRef} className="hero-blob-wrap absolute -top-16 -left-16 sm:-top-24 sm:-left-24" aria-hidden="true">
         <div className="hero-blob-navy w-56 h-56 sm:w-72 sm:h-72 md:w-96 md:h-96 rounded-full bg-[#021A54] opacity-20 blur-2xl md:blur-3xl" />
       </div>
-      <div
-        id="hero-blob-pink-wrap"
-        ref={blobPinkRef}
-        className="hero-blob-wrap absolute -bottom-20 -right-12 sm:-bottom-32 sm:-right-16"
-        aria-hidden="true"
-      >
+      <div id="hero-blob-pink-wrap" ref={blobPinkRef} className="hero-blob-wrap absolute -bottom-20 -right-12 sm:-bottom-32 sm:-right-16" aria-hidden="true">
         <div className="hero-blob-pink w-56 h-56 sm:w-72 sm:h-72 md:w-96 md:h-96 rounded-full bg-[#FF85BB] opacity-30 blur-2xl md:blur-3xl" />
       </div>
-      <div
-        id="hero-blob-light-pink-wrap"
-        ref={blobLightPinkRef}
-        className="hero-blob-wrap absolute top-1/4 right-1/4 hidden sm:block"
-        aria-hidden="true"
-      >
+      <div id="hero-blob-light-pink-wrap" ref={blobLightPinkRef} className="hero-blob-wrap absolute top-1/4 right-1/4 hidden sm:block" aria-hidden="true">
         <div className="hero-blob-light-pink w-40 h-40 md:w-64 md:h-64 rounded-full bg-[#FFCEE3] opacity-40 blur-2xl md:blur-3xl" />
       </div>
 
-      {/* Floating particles — CSS hides the last few on mobile */}
+      {/* Floating particles */}
       <div id="hero-particles" className="hero-particles absolute inset-0 pointer-events-none" aria-hidden="true">
         {[...Array(8)].map((_, i) => (
           <span
@@ -120,7 +102,7 @@ export default function Hero() {
           id="hero-badge"
           type="button"
           onClick={handleBadgeClick}
-          className="hero-fade-up hero-badge-clickable font-mono text-xs sm:text-sm text-[#021A54] bg-[#FFCEE3] border border-[#FF85BB] rounded-full px-3 sm:px-4 py-1.5 mb-5 sm:mb-6 w-full max-w-[220px] sm:max-w-[240px] flex items-center justify-center gap-2"
+          className="hero-fade-up hero-badge-clickable about-handwritten text-sm sm:text-base text-[#021A54] bg-[#FFCEE3] border border-[#FF85BB] rounded-full px-3 sm:px-4 py-1.5 mb-5 sm:mb-6 w-full max-w-[220px] sm:max-w-[240px] flex items-center justify-center gap-2"
           aria-label="Click to see my other roles"
         >
           <span aria-hidden="true">{"</>"}</span>
@@ -134,7 +116,18 @@ export default function Hero() {
           className="hero-fade-up-delay-1 text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-[#021A54] tracking-tight leading-tight"
         >
           Hi, I'm{" "}
-          <span className="text-[#FF85BB]">Sigrid</span>
+          <span className="hero-underline-wrap">
+            <span className="text-[#FF85BB]">Sigrid</span>
+            <svg className="hero-underline-svg" viewBox="0 0 140 16" preserveAspectRatio="none" aria-hidden="true">
+              <path
+                d="M2,9 C 30,2 60,13 80,7 C 100,2 120,10 138,6"
+                fill="none"
+                stroke="#FF85BB"
+                strokeWidth="3"
+                strokeLinecap="round"
+              />
+            </svg>
+          </span>
           <span
             id="hero-cursor"
             className="hero-cursor inline-block w-[2px] sm:w-[3px] h-8 sm:h-10 md:h-12 bg-[#021A54] ml-1 sm:ml-2 align-middle"
@@ -150,8 +143,8 @@ export default function Hero() {
           designed web experiences.
         </p>
 
-        
-        <a  id="hero-cta"
+        <a
+          id="hero-cta"
           href="#projects"
           className="hero-fade-up-delay-3 group inline-flex items-center gap-2 bg-[#021A54] text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium text-sm sm:text-base
                      transition-all duration-300 hover:bg-[#FF85BB] hover:text-[#021A54] hover:shadow-lg hover:shadow-[#FF85BB]/40"
@@ -162,6 +155,9 @@ export default function Hero() {
           </span>
         </a>
       </div>
+
+      {/* Torn-paper edge at the bottom, into About */}
+      <div className="hero-torn-edge" aria-hidden="true" />
     </section>
   )
 }

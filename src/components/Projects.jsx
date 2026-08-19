@@ -13,7 +13,7 @@ const PROJECTS = [
     period: "Feb 2026 – May 2026",
     description:
       "Built a web-based Learning Management System to improve online learning delivery, customizing course pages and UI for better accessibility.",
-    tech: ["WordPress", "Elementor", "Tutor LMS"],
+    tech: ["WordPress", "Elementor", "Tutor LMS", "php", "javascript"],
     image: lms,
     link: "https://learnbyalps.com/",
   },

@@ -23,7 +23,6 @@ const DESIGNS = [
     id: "design-1",
     title: "Five Security Risks Infographic",
     category: "Infographic",
-    year: "2026",
     description: "An infographic breaking down five security risks, made for our Multimedia class.",
     details: [
       "This infographic explains five common security risks in a clear, visual way. It was an activity for our Multimedia subject.",
@@ -36,7 +35,6 @@ const DESIGNS = [
     id: "design-2",
     title: "Santa Cruzan 2026 Announcement",
     category: "Poster",
-    year: "2026",
     description: "An announcement poster for the Santa Cruzan 2026 at Our Lady of Lourdes Chapel.",
     details: [
       "A poster announcing the Santa Cruzan 2026 at Our Lady of Lourdes Chapel, posted on the chapel's Facebook page.",
@@ -49,7 +47,6 @@ const DESIGNS = [
     id: "design-3",
     title: "Academic Achievers Posting",
     category: "Social Media",
-    year: "2025",
     description: "A congratulatory post for the academic achievers of our first semester block.",
     details: [
       "A recognition post for the academic achievers of our block in the first semester, published on our university block's Facebook page.",
@@ -62,7 +59,6 @@ const DESIGNS = [
     id: "design-4",
     title: "All About Me Magazine Layout",
     category: "Magazine Layout",
-    year: "2025",
     description: "A creative magazine spread about myself, made for our magazine project.",
     details: [
       "A magazine-style layout about myself, created for our magazine project.", "I played with typography, image placement, and spacing to give it the feel of a real editorial spread while still showing my personality.",
@@ -75,7 +71,6 @@ const DESIGNS = [
     id: "design-5",
     title: "No Healing Mass Announcement",
     category: "Poster",
-    year: "2025",
     description: "A Facebook announcement for Our Lady of Lourdes Chapel about the suspended healing mass.",
     details: [
       "An announcement poster for Our Lady of Lourdes Chapel, posted on Facebook, letting parishioners know that there will be no healing mass.",
@@ -88,7 +83,6 @@ const DESIGNS = [
     id: "design-6",
     title: "CISCO NetConnect Membership Drive",
     category: "Social Media",
-    year: "2025",
     description: "A poster announcing that membership applications are now open for CISCO NetConnect.",
     details: [
       "A social media announcement for CISCO NetConnect PUP-Sta. Mesa, an academic organization, informing students that membership applications are now open.",

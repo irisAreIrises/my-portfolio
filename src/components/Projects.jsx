@@ -32,7 +32,7 @@ const PROJECTS = [
       "The official website for the 5th Annual Southeast Asia HR Expo & Symposium (SEA HRES 2026), a premier HR summit bringing together HR leaders, industry experts, and innovators from across the region.",
       "Organized by ALPs, the event brings together organizations from both the public and private sectors. I developed responsive and user-friendly pages to effectively present the event, speakers, agenda, and other key information to attendees.",
     ],
-    tech: ["WordPress", "Elementor"],
+    tech: ["WordPress", "Elementor", "javascript", "css", "html"],
     image: hrExpo,
     link: "https://hrexposymposium.com/",
   },
@@ -48,7 +48,7 @@ const PROJECTS = [
       "Clients can browse menus, check availability, submit catering reservations, and track their reservation status. Staff, on the other hand, can manage approvals, capacity limits, blackout dates, inventory, and reports.",
       "As the backend developer, I designed the reservation logic and database structure for orders, menu items, and inventory, including safeguards against double-bookings. The system also features Market Basket Analysis for menu recommendations and an AI Admin Assistant for report summaries, data retrieval, and automatically filling forms based on phone requests.",
     ],
-    tech: ["Database Design", "Backend Logic"],
+    tech: ["Database Design", "Backend Logic", "javascript", "css", "html", "php", "MySQL"],
     image: pupgass,
   },
   {
@@ -58,7 +58,7 @@ const PROJECTS = [
     period: "2023 – 2024",
     description:
       "Designed a community-focused database system with table relationships, forms, queries, and reports to streamline community records.",
-    tech: ["MS Access"],
+    tech: ["MS Access", "Database Design", "Forms", "Queries", "Reports"],
     image: cpd,
   },
   {

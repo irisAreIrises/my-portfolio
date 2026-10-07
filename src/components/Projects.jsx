@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
 import cpd from "../assets/cpd.webp"
 import hrExpo from "../assets/hrexpo.webp"
 import pupgass from "../assets/gass-uccs.webp"
@@ -13,6 +13,10 @@ const PROJECTS = [
     period: "Feb 2026 – May 2026",
     description:
       "Built a web-based Learning Management System to improve online learning delivery, customizing course pages and UI for better accessibility.",
+    details: [
+      "A web-based Learning Management System built for Advanced Learning Programs (ALPs), a leading training provider in the Philippines known for organizing local and international conferences.",
+      "I customized the course pages and overall UI using Elementor and Tutor LMS, with a focus on accessibility and a smoother online learning experience.",
+    ],
     tech: ["WordPress", "Elementor", "Tutor LMS", "php", "javascript"],
     image: lms,
     link: "https://learnbyalps.com/",
@@ -24,17 +28,27 @@ const PROJECTS = [
     period: "Apr 2026 – May 2026",
     description:
       "Developed the official event website, implementing responsive, user-friendly designs for a large-scale HR symposium.",
+    details: [
+      "The official website for the 5th Annual Southeast Asia HR Expo & Symposium (SEA HRES 2026), a premier HR summit bringing together HR leaders, industry experts, and innovators.",
+      "Organized by ALPs, the event caters to top organizations in both the public and private sectors. I built responsive, user-friendly pages to present the event to a large audience.",
+    ],
     tech: ["WordPress", "Elementor"],
     image: hrExpo,
     link: "https://hrexposymposium.com/",
   },
   {
     id: "pupgass",
-    title: "PUPGASS–UCSS Catering Management System",
+    title: "PUPGASS–UCCS Catering Management System",
     role: "Backend Developer",
     period: "2025 – 2026",
     description:
       "Built secure backend logic for canteen reservations and catering operations, with a database schema tracking orders, menu items, and inventory to prevent double-bookings.",
+    details: [
+      "A web-based catering management system for the University Canteen Catering Service (UCCS) under GASS at PUP, replacing paper forms, Google Sheets, and a whiteboard calendar.",
+      "Clients can view the menu, check the calendar, submit reservations, and track their status. Staff get approval tools, capacity limits, blackout dates, inventory tracking, and reports.",
+      "My role was the backend: secure reservation logic and a database schema for orders, menu items, and inventory that prevents double-bookings.",
+      "The system also includes Market Basket Analysis for menu recommendations and an AI Admin Assistant for summarized reports, data retrieval, and auto-filling forms from phone requests.",
+    ],
     tech: ["Database Design", "Backend Logic"],
     image: pupgass,
   },
@@ -147,10 +161,96 @@ function CurvedArrow({ className }) {
   )
 }
 
+function ProjectModal({ project, onClose }) {
+  const closeRef = useRef(null)
+
+  useEffect(() => {
+    const previouslyFocused = document.activeElement
+    const prevOverflow = document.body.style.overflow
+    const onKey = (e) => e.key === "Escape" && onClose()
+
+    document.body.style.overflow = "hidden"
+    document.addEventListener("keydown", onKey)
+    closeRef.current?.focus()
+
+    return () => {
+      document.body.style.overflow = prevOverflow
+      document.removeEventListener("keydown", onKey)
+      previouslyFocused?.focus?.()
+    }
+  }, [onClose])
+
+  const paragraphs = project.details ?? [project.description]
+
+  return (
+    <div className="projects-modal-overlay" onClick={onClose}>
+      <div
+        className="projects-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="projects-modal-title"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <span className="projects-tape projects-tape-pink projects-modal-tape" aria-hidden="true" />
+
+        <button
+          ref={closeRef}
+          type="button"
+          className="projects-modal-close"
+          onClick={onClose}
+          aria-label="Close project details"
+        >
+          ✕
+        </button>
+
+        <div className="projects-modal-image">
+          <img src={project.image} alt={`${project.title} preview`} />
+        </div>
+
+        <div className="projects-modal-body">
+          <span className="projects-role about-handwritten">
+            {project.role} · {project.period}
+          </span>
+          <h3 id="projects-modal-title" className="projects-modal-title">
+            {project.title}
+          </h3>
+
+          {paragraphs.map((p, idx) => (
+            <p key={idx} className="projects-modal-text">
+              {p}
+            </p>
+          ))}
+
+          <div className="projects-tags">
+            {project.tech.map((t) => (
+              <span key={t} className="projects-tag">
+                {t}
+              </span>
+            ))}
+          </div>
+
+          {project.link && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="projects-view-more projects-modal-visit"
+            >
+              Visit website ↗
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function Projects() {
   const [isVisible, setIsVisible] = useState(false)
   const [showAll, setShowAll] = useState(false)
+  const [selected, setSelected] = useState(null)
   const sectionRef = useRef(null)
+  const closeModal = useCallback(() => setSelected(null), [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -191,15 +291,6 @@ export default function Projects() {
           {visibleProjects.map((project, i) => {
             const mount = MOUNTS[i % MOUNTS.length]
             const tapeVariant = TAPE_VARIANTS[i % TAPE_VARIANTS.length]
-            const CardTag = project.link ? "a" : "div"
-            const cardLinkProps = project.link
-              ? {
-                  href: project.link,
-                  target: "_blank",
-                  rel: "noopener noreferrer",
-                  "aria-label": `Visit ${project.title} (opens in a new tab)`,
-                }
-              : {}
 
             return (
               <div
@@ -208,11 +299,14 @@ export default function Projects() {
                 className={`projects-card ${isVisible ? "projects-visible" : ""}`}
                 style={{ transitionDelay: isVisible ? `${i * 0.08}s` : "0s" }}
               >
-                <CardTag
-                  {...cardLinkProps}
-                  className={`projects-polaroid ${
+                <button
+                  type="button"
+                  onClick={() => setSelected(project)}
+                  aria-haspopup="dialog"
+                  aria-label={`View details for ${project.title}`}
+                  className={`projects-polaroid projects-polaroid-btn ${
                     i % 2 === 0 ? "projects-tilt-a" : "projects-tilt-b"
-                  } ${project.link ? "projects-polaroid-link" : ""}`}
+                  } projects-polaroid-link`}
                 >
                   {i === 0 && (
                     <span className="projects-featured-badge about-handwritten">Featured!</span>
@@ -237,26 +331,7 @@ export default function Projects() {
                     <span className="projects-role about-handwritten">
                       {project.role} · {project.period}
                     </span>
-                    <h3 className="projects-title">
-                      {project.title}
-                      {project.link && (
-                        <svg
-                          className="projects-link-icon"
-                          viewBox="0 0 24 24"
-                          width="14"
-                          height="14"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2.2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          aria-hidden="true"
-                        >
-                          <path d="M7 17 17 7" />
-                          <path d="M9 7h8v8" />
-                        </svg>
-                      )}
-                    </h3>
+                    <h3 className="projects-title">{project.title}</h3>
                     <p className="projects-description">{project.description}</p>
                     <div className="projects-tags">
                       {project.tech.map((t) => (
@@ -266,7 +341,7 @@ export default function Projects() {
                       ))}
                     </div>
                   </div>
-                </CardTag>
+                </button>
               </div>
             )
           })}
@@ -293,6 +368,8 @@ export default function Projects() {
           </div>
         )}
       </div>
+
+      {selected && <ProjectModal project={selected} onClose={closeModal} />}
     </section>
   )
 }

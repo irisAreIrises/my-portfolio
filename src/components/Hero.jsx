@@ -3,7 +3,7 @@ import { useState, useEffect, useRef, useCallback } from "react"
 const ROLES = [
   "WordPress Developer",
   "Frontend Developer",
-  "Web Developer",
+  "Graphic Designer",
   "Software Tester",
 ]
 

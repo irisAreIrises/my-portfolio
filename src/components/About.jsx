@@ -141,17 +141,23 @@ export default function About() {
             <div id="about-text-block" className={`about-text-block ${isVisible ? "about-visible" : ""}`}>
               <div id="about-name-tag" className="about-name-tag mb-6">
                 <span className="about-handwritten text-3xl sm:text-4xl font-bold">
-                  Hi, I'm Sigrid Bermas
+                  Hi, I'm Sigrid Bermas,
                 </span>
               </div>
 
-              <p id="about-bio" className="text-gray-700 leading-relaxed mb-2">
-                I'm an aspiring IT professional focused on{" "}
+              <p id="about-bio" className="text-gray-700 leading-relaxed mb-3">
+                a BS Information Technology graduate from PUP who found my place in tech by
+                trying different things and learning along the way.
+              </p>
+
+              <p id="about-bio-1b" className="text-gray-700 leading-relaxed mb-2">
+                I enjoy building things for the web, especially when I can turn an idea or design into
+                something people can actually use. I'm drawn to{" "}
                 <span className="text-[#FF85BB] font-semibold">Frontend Development</span> and{" "}
-                <span className="text-[#FF85BB] font-semibold">Software Testing</span>. Alongside
-                that, I've picked up hands-on{" "}
-                <span className="text-[#FF85BB] font-semibold">WordPress development</span> experience
-                through my internship and current part-time role.
+                <span className="text-[#FF85BB] font-semibold">Software Testing</span>, where I get to work
+                on both how a product looks and how it works. My experience with{" "}
+                <span className="text-[#FF85BB] font-semibold">WordPress</span> has also given me the chance
+                to build and improve real websites beyond the classroom.
               </p>
 
               <div
@@ -159,12 +165,23 @@ export default function About() {
                 className={`about-bio-extra ${isBioExpanded ? "about-open" : ""}`}
               >
                 <div style={{ overflow: "hidden" }}>
-                  <p id="about-bio-2" className="text-gray-700 leading-relaxed pt-2 pb-1">
-                    While finishing my degree, I've been spending my time sharpening my skills,
-                    exploring new tools, and pushing myself outside my comfort zone. Beyond
-                    development, I also enjoy graphic design — I create publication materials for
-                    our Chapel.
-                  </p>
+                  <div className="space-y-3 pt-2 pb-1">
+                    <p id="about-bio-2" className="text-gray-700 leading-relaxed">
+                      But for me, IT has never been just about code. I've learned to enjoy the process of
+                      figuring things out, asking why something isn't working, and finding a way to make it
+                      better. That's part of what led me to QA and testing. I like looking at a system from
+                      a user's perspective and thinking about the things that could go wrong.
+                    </p>
+                    <p id="about-bio-3" className="text-gray-700 leading-relaxed">
+                      Outside of tech, I enjoy <span className="text-[#FF85BB] font-semibold">Graphic Design</span> and creating publication materials for our
+                      Chapel. It's something that reminds me that I can be both technical and creative.
+                    </p>
+                    <p id="about-bio-4" className="text-gray-700 leading-relaxed">
+                      I'm still learning, still exploring, and still figuring out where this path will take
+                      me. For now, I'm excited to keep building, testing, creating, and growing along the
+                      way.
+                    </p>
+                  </div>
                 </div>
               </div>
 

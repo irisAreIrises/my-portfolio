@@ -8,14 +8,14 @@ import createspace from "../assets/CreateSpace.webp"
 const PROJECTS = [
   {
     id: "lms",
-    title: "Web LMS for Advanced Learning Programs",
+    title: "LearnByALPS Learning Management System",
     role: "Frontend Developer Intern",
     period: "Feb 2026 – May 2026",
     description:
       "Built a web-based Learning Management System to improve online learning delivery, customizing course pages and UI for better accessibility.",
     details: [
-      "A web-based Learning Management System built for Advanced Learning Programs (ALPs), a leading training provider in the Philippines known for organizing local and international conferences.",
-      "I customized the course pages and overall UI using Elementor and Tutor LMS, with a focus on accessibility and a smoother online learning experience.",
+      "A web-based Learning Management System developed for Advanced Learning Programs (ALPs), a preferred training partner delivering high-impact onsite and online training programs in leadership development, digital transformation, and artificial intelligence.",
+      "I customized the course pages and overall user interface using Elementor and Tutor LMS, with a focus on accessibility, responsive design, and creating a smoother online learning experience for learners.",
     ],
     tech: ["WordPress", "Elementor", "Tutor LMS", "php", "javascript"],
     image: lms,
@@ -29,8 +29,8 @@ const PROJECTS = [
     description:
       "Developed the official event website, implementing responsive, user-friendly designs for a large-scale HR symposium.",
     details: [
-      "The official website for the 5th Annual Southeast Asia HR Expo & Symposium (SEA HRES 2026), a premier HR summit bringing together HR leaders, industry experts, and innovators.",
-      "Organized by ALPs, the event caters to top organizations in both the public and private sectors. I built responsive, user-friendly pages to present the event to a large audience.",
+      "The official website for the 5th Annual Southeast Asia HR Expo & Symposium (SEA HRES 2026), a premier HR summit bringing together HR leaders, industry experts, and innovators from across the region.",
+      "Organized by ALPs, the event brings together organizations from both the public and private sectors. I developed responsive and user-friendly pages to effectively present the event, speakers, agenda, and other key information to attendees.",
     ],
     tech: ["WordPress", "Elementor"],
     image: hrExpo,
@@ -44,10 +44,9 @@ const PROJECTS = [
     description:
       "Built secure backend logic for canteen reservations and catering operations, with a database schema tracking orders, menu items, and inventory to prevent double-bookings.",
     details: [
-      "A web-based catering management system for the University Canteen Catering Service (UCCS) under GASS at PUP, replacing paper forms, Google Sheets, and a whiteboard calendar.",
-      "Clients can view the menu, check the calendar, submit reservations, and track their status. Staff get approval tools, capacity limits, blackout dates, inventory tracking, and reports.",
-      "My role was the backend: secure reservation logic and a database schema for orders, menu items, and inventory that prevents double-bookings.",
-      "The system also includes Market Basket Analysis for menu recommendations and an AI Admin Assistant for summarized reports, data retrieval, and auto-filling forms from phone requests.",
+      "A web-based catering management system developed for the University Canteen Catering Service (UCCS) under the General Administrative Support Services (GASS) at PUP. The system replaces paper forms, Google Sheets, and a manual whiteboard calendar with a centralized digital platform.",
+      "Clients can browse menus, check availability, submit catering reservations, and track their reservation status. Staff, on the other hand, can manage approvals, capacity limits, blackout dates, inventory, and reports.",
+      "As the backend developer, I designed the reservation logic and database structure for orders, menu items, and inventory, including safeguards against double-bookings. The system also features Market Basket Analysis for menu recommendations and an AI Admin Assistant for report summaries, data retrieval, and automatically filling forms based on phone requests.",
     ],
     tech: ["Database Design", "Backend Logic"],
     image: pupgass,
